@@ -2876,7 +2876,7 @@ async function startServer() {
       next();
     }
   });
-  server.listen(PORT, "127.0.0.1", () => {
+  server.listen(PORT, "0.0.0.0", () => {
     logStartup(`MYRAA V2 server started on http://localhost:${PORT}`);
     console.log(`[Server] Running on http://localhost:${PORT}`);
     // Desktop agent is verified on demand before calls
