@@ -1,7 +1,7 @@
 """
 MYRAA Desktop Control Agent v2.0
 High-performance, DPI-aware local background agent for Windows automation.
-Listens on http://127.0.0.1:8765
+Listens on http://127.0.0.1:8766
 """
 
 import os
@@ -227,7 +227,8 @@ def dynamic_open_app(name: str) -> dict:
         "visual studio code": "code.cmd",
         "paint": "mspaint.exe",
         "settings": "ms-settings:",
-        "snipping tool": "ms-screenclip:"
+        "snipping tool": "ms-screenclip:",
+        "instagram": "shell:AppsFolder\\Facebook.InstagramBeta_8xx8rvfyw5nnt!App"
     }
     
     low = clean_name.lower()
@@ -428,7 +429,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         pass
 
 def main():
-    port = 8765
+    port = 8766
     server = HTTPServer(("127.0.0.1", port), RequestHandler)
     log_message("INFO", f"Starting MYRAA agent v2.0 on 127.0.0.1:{port}")
     try:
@@ -438,3 +439,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
