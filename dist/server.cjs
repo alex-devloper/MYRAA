@@ -1,4 +1,4 @@
-﻿const path = require("path");
+const path = require("path");
 const fs = require("fs");
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -2636,19 +2636,6 @@ async function startServer() {
               if (currentModelResponseText.trim()) {
                 dialogueHistory.push({ role: "model", text: currentModelResponseText });
                 currentModelResponseText = "";
-              }
-              if (dialogueHistory.length >= 2) {
-                (async () => {
-                  try {
-                    const updated = await processConversationSlice(apiKey, dialogueHistory);
-                    if (updated) {
-                      console.log("[Memory Sync] Sending refreshed memory list to client.");
-                      clientWs.send(JSON.stringify({ type: "memory_sync", memories: updated }));
-                    }
-                  } catch (err) {
-                    console.error("[Memory Sync] Error running background consolidation:", err);
-                  }
-                })();
               }
             }
             if (message.serverContent?.userTurn?.parts) {
